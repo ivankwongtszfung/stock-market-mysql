@@ -1,0 +1,16 @@
+query question
+1.Customers, brokers and administrators can list the latest stock information.
+Guests can list one-hour delayed stock information only.
+2.Users must be able to search stocks by stock symbol or stock index.
+3. Given a particular day, the system must display simple statistics of stocks including day’s
+range, opening price and closing price and the five most active stocks, i.e. the top-5
+stocks with the largest amount of trade.
+4. List the three most popular brokers, i.e. the brokers who are hired by the largest number
+of customers.
+5. List the customer who refers, directly and indirectly, the most number of customers.
+
+trigger
+Since I have two tables store the stock value, one is stock which has an index number as a primary key and the stock_log which has a timestamp as a primary key. When customer do searching, it searches the delay information from stock_log, if they are customer broker administrators, then list the latest stock information. I assume for every 15mins, the stock value will be only update once and the stock_log is triggered by stock update or insert
+
+To attach the 3NF structure every many to many relationship I will additionally add a look up table to store the value. However, I also find there is some redundancy in the problem in 3NF so I add tables when there is one to many relationships to abort useless relation
+Since one cell should have one value, so the limited order I use two columns to store, upper and lower.
